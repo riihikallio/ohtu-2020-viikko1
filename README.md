@@ -5,3 +5,5 @@
 [![codecov](https://codecov.io/gh/riihikallio/ohtu-2020-viikko1/branch/main/graph/badge.svg?token=UDDINIW2FG)](undefined)
 
 Ohjelmistotuotanto 2020 viikko 1
+
+Eikä tässä kaikki! -> https://github.com/riihikallio/ohtu-2020
