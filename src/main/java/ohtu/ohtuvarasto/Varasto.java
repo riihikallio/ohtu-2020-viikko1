@@ -17,21 +17,24 @@ public class Varasto {
         saldo = 0;     // oletus: varasto on tyhjä
     }
 
+    private double checkAlkusaldo(double alkuSaldo) {
+        if (alkuSaldo < 0.0) {
+            return 0.0;
+        } else if (alkuSaldo <= tilavuus) // mahtuu
+        {
+            return alkuSaldo;
+        } else {
+            return tilavuus;  // täyteen ja ylimäärä hukkaan!
+        }
+    }
+
     public Varasto(double tilavuus, double alkuSaldo) { // kuormitetaan
         if (tilavuus > 0.0) {
             this.tilavuus = tilavuus;
-        } else // virheellinen, nollataan
-        {
+        } else { // virheellinen, nollataan
             this.tilavuus = 0.0;  // => käyttökelvoton varasto
         }
-        if (alkuSaldo < 0.0) {
-            this.saldo = 0.0;
-        } else if (alkuSaldo <= tilavuus) // mahtuu
-        {
-            this.saldo = alkuSaldo;
-        } else {
-            this.saldo = tilavuus;  // täyteen ja ylimäärä hukkaan!
-        }
+        this.saldo = checkAlkusaldo(alkuSaldo);
     }
 
     // --- ottavat aksessorit eli getterit: ---
@@ -44,7 +47,7 @@ public class Varasto {
     }
 
     public double paljonkoMahtuu() {  // huom: ominaisuus voidaan myös laskea
-        return tilavuus - saldo;        //  ei tarvita erillistä kenttää vielaTilaa tms.
+        return tilavuus - saldo;        
     }
 
     // --- asettavat aksessorit eli setterit: ---
